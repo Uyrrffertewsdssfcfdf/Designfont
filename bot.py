@@ -1,11 +1,10 @@
-import os
+import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
-# توکن ربات خودت رو اینجا بذار
+logging.basicConfig(level=logging.INFO)
+
 BOT_TOKEN = "6869838687:AAGdJTM-tv3tcvEYJlFjUNPYz4MS83HW86w"
-
-# مسیر فایل فونت
 FONT_FILE = "font.zip"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -23,11 +22,12 @@ async def send_font(update: Update, context: ContextTypes.DEFAULT_TYPE):
     with open(FONT_FILE, "rb") as f:
         await query.message.reply_document(document=f, filename="font.zip")
 
-from telegram.ext import CallbackQueryHandler
-
-if __name__ == "__main__":
-    app = ApplicationBuilder().token(BOT_TOKEN).build()
+def main():
+    app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(send_font, pattern="get_font"))
     print("ربات شروع به کار کرد...")
     app.run_polling()
+
+if __name__ == "__main__":
+    main()
