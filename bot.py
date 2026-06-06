@@ -5,7 +5,7 @@ from telegram.error import TelegramError
 
 logging.basicConfig(level=logging.INFO)
 
-BOT_TOKEN = "8949321501:AAHbD9ke2N7rWZFH9r0ApyH_YmktKYCTdeA"
+BOT_TOKEN = "6869838687:AAELbPlepMZieYhUP2cwa4cXbSxDKZu3Fjs"
 CHANNEL_ID = "@designfont6"
 ADMIN_ID = 1836165249  # آیدی عددی خودت
 
